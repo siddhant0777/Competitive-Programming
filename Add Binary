@@ -1,0 +1,93 @@
+class Solution {
+    public String addBinary(String a, String b) {
+      StringBuilder sb = new StringBuilder();
+
+        int i = a.length() - 1;
+        int j = b.length() - 1;
+        int carry = 0;
+        int res = 0;
+
+        while (i >= 0 || j >= 0) {
+            int char1 = (i >= 0) ? a.charAt(i) - '0' : 0;
+            int char2 = (j >= 0) ? b.charAt(j) - '0' : 0;
+
+            int sum = char1 + char2 + carry;
+
+            res = sum % 2;
+            carry = sum / 2;
+
+            sb.insert(0, res);
+
+            i--;
+            j--;
+        }
+
+        if (carry != 0) {
+            sb.insert(0, carry);
+        }
+
+        return sb.toString();
+    }
+        
+}
+
+
+
+======================================================================================================================
+/* ---My original solution that ws giving the below error 
+Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
+        at java.base/java.util.Arrays.copyOf(Arrays.java:3745)
+        at java.base/java.lang.AbstractStringBuilder.ensureCapacityInternal(AbstractStringBuilder.java:172)
+        at java.base/java.lang.AbstractStringBuilder.append(AbstractStringBuilder.java:775)
+        at java.base/java.lang.StringBuilder.append(StringBuilder.java:248)
+        at Main.addBinary(Main.java:43)
+        at Main.main(Main.java:14)
+
+--- */
+
+public class Main {
+    public static void main(String[] args) 
+    {
+        String a = "101";
+        String b = "110";
+        String str = addBinary(a, b);
+        System.out.println("The output is "+str);
+    }
+    
+    public static String addBinary(String a, String b) {
+
+        StringBuilder sb= new StringBuilder();
+
+        int i = a.length()-1;
+        int j= b.length()-1;
+        int carry=0;
+        int res=0;
+        while (i>=0 || j>=0)
+       {
+           int char1= a.charAt(i)- '0';
+           int char2= b.charAt(j)-'0';
+
+            int c=char1+char2+carry;
+        
+            if(c>1)
+              {
+                res=0;
+                carry=1;
+                sb.append(res);
+              }
+             else
+              {
+               res=1;
+               carry=0;
+               sb.append(res);
+              }
+
+        } 
+        if(carry !=0)
+        {
+            sb.append(res);
+        }
+        
+        return sb.toString();
+    }
+}
