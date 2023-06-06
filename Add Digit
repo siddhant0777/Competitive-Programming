@@ -1,0 +1,47 @@
+class Solution {
+   public int addDigits(int num)
+   {
+     if(num/10==0)
+     {
+         return num;
+     }
+     int sumdigit=0;
+     while(num>0)
+     {
+         sumdigit=sumdigit+num%10;
+         num=num/10;
+     }
+     return addDigits(sumdigit);
+   }  
+}
+
+
+==================================================================
+Getting Timelimit exceeded for the below code
+==================================================================
+/*public int addDigits(int num) {
+        int res1=0;
+    int res=calculate(num);
+    if(res>9)
+    {
+       calculate(res); 
+    }
+    else
+    {
+         res1=res;
+    }
+       return res1;
+        
+    }
+
+     public int calculate(int number)
+        {
+            int sum=0;
+           while (number>0)
+           {
+               int mod= number%10;
+               int divisor=number/10;
+               sum=sum+mod;
+           } 
+           return sum;
+        } */
