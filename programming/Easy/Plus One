@@ -1,0 +1,56 @@
+https://leetcode.com/problems/plus-one/description/
+
+==========================================================================
+
+Brute force but fails for [9,9] that should give [1,0,0] but gives [9,1,0]
+
+class Solution {
+    public int[] plusOne(int[] digits) {
+
+        int length=digits.length;
+        int last_digit=digits[length-1];
+         int[] digits1= new int[length+1];
+
+        if(last_digit==9)
+       {
+            int index=length-2;
+
+            for(int i=0;i<=length-2;i++){
+                digits1[i]=digits[i];
+            }
+            digits1[index+1]=1;
+            digits1[index+2]=0;
+            return digits1;   
+        }
+        else
+        {
+            int index=length-2;
+             for(int i=0;i<=length-2;i++){
+                digits[i]=digits[i];
+            }
+            digits[index+1]=last_digit+1;
+            return digits;
+        }    
+    }
+}
+
+================================================================================================
+class Solution {
+    public int[] plusOne(int[] digits) {
+
+        int n=digits.length;
+        for(int i=n-1;i>=0;i--){
+            if(digits[i]<9) // 1234578
+            {
+              digits[i]++;
+              return digits;
+            }
+            digits[i]=0; //9
+        }
+
+        int[] new_number= new int[n+1];
+        new_number[0]=1;
+        return new_number;
+    }
+   } 
+
