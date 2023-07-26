@@ -1,0 +1,51 @@
+https://leetcode.com/problems/two-sum/submissions/
+
+Two Sum
+============================================================
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        HashMap<Integer, Integer> hash= new HashMap<>();
+        for(int i=0;i<nums.length;i++){
+            int complement= target-nums[i]; //7
+            if(hash.containsKey(complement)){
+                return new int[] {hash.get(complement), i};
+            }
+            hash.put(nums[i],i);
+        }
+       throw new IllegalArgumentException("No match found");
+    }
+}
+
+===========================================================================
+
+Explanation :-
+
+Let's go through the code step-by-step and perform a stack trace for the input [2, 7, 11, 15] and target = 9 to understand how the solution works:
+
+int[] nums = [2, 7, 11, 15]: The given input array.
+
+target = 9: The target value.
+
+HashMap<Integer, Integer> hash = new HashMap<>();: Initialize an empty HashMap to store the elements from the nums array and their indices.
+
+for (int i = 0; i < nums.length; i++): Start iterating through the nums array.
+
+a. i = 0, nums[i] = 2, target - nums[i] = 9 - 2 = 7.
+
+b. hash.containsKey(complement): Check if hash contains the key 7. Since hash is currently empty, this condition is false.
+
+c. hash.put(nums[i], i): Put the current element and its index into the hash map: {2: 0}.
+
+The hash map at this point: {2: 0}.
+
+d. Move to the next iteration.
+
+a. i = 1, nums[i] = 7, target - nums[i] = 9 - 7 = 2.
+
+b. hash.containsKey(complement): Check if hash contains the key 2. Since hash contains {2: 0}, this condition is true.
+
+c. return new int[] {hash.get(complement), i};: Return an array with the indices of the two elements that add up to the target. Here, hash.get(complement) is equivalent to hash.get(2), which returns the value corresponding to the key 2 in the hash map. The value is 0, and the current index i is 1.
+
+Therefore, the method returns [0, 1].
+
+The stack trace shows that the method found the pair [2, 7] at indices [0, 1] in the nums array, which indeed sums up to the target value of 9. This is why the output of the function for the input [2, 7, 11, 15] is [0, 1].
