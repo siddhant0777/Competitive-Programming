@@ -1,0 +1,49 @@
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/
+======================================================================================
+
+This gives TLE and is brute force approach
+
+class Solution {
+    public int maxProfit(int[] prices) {
+
+        int min=Integer.MAX_VALUE;
+        int max=0;
+        int length=prices.length;
+        int i=0;
+        int k=0;
+        for(int j=length-1;j>0;j--)
+        {
+            while(i<length-1)
+            {
+            int result=prices[j]-prices[i];
+            max=Math.max(result, max);
+            i++;
+            }
+            i=0;
+            length--;
+        }
+        System.out.print(" Min value is "+min);
+       return max; 
+    }
+}
+
+=============================================
+
+Optimal Solution
+
+class Solution {
+    public int maxProfit(int[] prices) {
+        int min_val=Integer.MAX_VALUE;
+        int max=0;
+        for(int i=0;i<prices.length;i++)
+        {
+            if(prices[i]<min_val){
+               min_val=prices[i];
+            }
+            else if(prices[i]-min_val>max){
+                max=prices[i]-min_val;
+            }
+        }
+      return max;
+    }
+}
