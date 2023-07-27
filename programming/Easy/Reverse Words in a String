@@ -1,0 +1,25 @@
+https://leetcode.com/problems/reverse-words-in-a-string/description/?envType=study-plan-v2&envId=top-interview-150
+============================================================================================================================
+
+class Solution {
+    public String reverseWords(String s) {
+
+      StringBuilder sb=new StringBuilder();
+      int len=s.length();
+      int len1=len;
+        
+        for(int i=len-1;i>=0;i--){
+            if(s.charAt(i)==' ')
+            {
+               sb.append(s.substring(i,len1));
+               len1=i; 
+            }
+            
+        }
+        sb.append(' '+s.substring(0,len1));
+        return sb.toString().replaceAll("\s+"," ").trim();
+    }
+}
+
+//In summary, the replaceAll("\\s+", " ") method call replaces all consecutive
+whitespace characters (spaces, tabs, newlines, etc.) in the original string with a single space character.
