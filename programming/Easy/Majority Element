@@ -1,0 +1,12 @@
+https://leetcode.com/problems/majority-element/?envType=study-plan-v2&envId=top-interview-150
+
+=========================================================================================================
+
+class Solution {
+    public int majorityElement(int[] nums) {
+        Arrays.sort(nums);// [2,2,1,1,1,2,2] -->[1,1,1,2,2,2,2]
+        int n = nums.length; //3
+        return nums[n/2];
+    }
+}
+
