@@ -1,0 +1,25 @@
+https://leetcode.com/problems/length-of-last-word/submissions/?envType=study-plan-v2&envId=top-interview-150
+=================================================================================================================
+
+class Solution {
+    public int lengthOfLastWord(String s) {
+    s=s.trim();
+    int count=0;
+    int start_index=0;
+    int i=s.length()-1;
+    int len=i;
+     while(i >= 0 && s.charAt(i)!=' '){ 
+         i--;
+     }
+     start_index=i;
+     System.out.println("Index is "+i);
+     s=s.substring(start_index+1,len+1);
+     System.out.print("String is "+s);
+     count=s.length();
+        return count;
+    }
+}
+
+// i>0 because  issue in your code arises because of the assumption that there will be a space character in the string s. 
+When there is no space in the string, the while loop runs indefinitely and eventually results in a StringIndexOutOfBoundsException.
+//eg :-"aaaaaaaaaa"
