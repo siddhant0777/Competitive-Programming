@@ -1,0 +1,49 @@
+https://leetcode.com/problems/search-insert-position/description/?envType=study-plan-v2&envId=top-interview-150
+=====================================================================================================================
+
+// This solution is naive approach and takes 6 ms
+
+class Solution {
+    public int searchInsert(int[] nums, int target) {
+
+        int last=nums[nums.length-1];
+        int first=nums[0];
+        int i=nums.length-1;
+
+        System.out.print("Last is "+ last);
+
+        if(target>last){
+            return nums.length;
+        }
+
+        if(target<first){
+            return 0;
+        }
+       
+       
+       while(i>=0 && target-nums[i]<=0) 
+       {
+           i--;
+       }
+       return i+1;  
+    }
+}
+
+-------------------------------------------------------------------------------------------------------------------
+// Below solution is using divide and conquer and takes -ms
+
+class Solution {
+    public int searchInsert(int[] nums, int target) {
+        int start = 0;
+        int end = nums.length-1;
+
+        while (start <= end) {
+            int mid = start + (end-start)/2;
+            if (nums[mid] == target) return mid;
+            else if (nums[mid] > target) end = mid-1;
+            else start = mid+1;
+        }
+
+        return start;
+    }
+}
