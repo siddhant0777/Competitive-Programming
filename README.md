@@ -1,3 +1,9 @@
+# Geeks for Geeks Questions
+
+Arrays and Strings
+
+Stack
+
 # LeetCode
 LeetCode Solutions
 
