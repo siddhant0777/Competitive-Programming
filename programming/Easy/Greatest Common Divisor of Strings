@@ -1,0 +1,26 @@
+https://leetcode.com/problems/greatest-common-divisor-of-strings/description/?envType=study-plan-v2&envId=leetcode-75
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+
+class Solution {
+    public String gcdOfStrings(String str1, String str2) {
+
+// boolean res=str1+str2==str2+str1;
+// System.out.println("the res is "+res); -->This returns false
+
+// boolean res1=(str1+str2).equals(str2+str1);
+// System.out.print("the res1 is "+res1);  -->This returns true
+
+        if(!(str1+str2).equals(str2+str1)){  
+            return "";
+        }
+        else{
+            int gcd=gcdofstrings(str1.length(),str2.length());
+            return str1.substring(0,gcd);
+        }
+    }
+
+        public int gcdofstrings(int a, int b){
+            return b==0?a:gcdofstrings(b,a%b);
+        }   
+}
