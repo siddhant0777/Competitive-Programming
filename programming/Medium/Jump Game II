@@ -1,0 +1,33 @@
+https://leetcode.com/problems/jump-game-ii/description/?envType=study-plan-v2&envId=top-interview-150
+-------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------
+
+class Solution {
+    public int jump(int[] nums) {
+        int jumps = 0;
+        int start = 0;
+        int end = nums.length - 1;
+
+        while (start < end) {
+            int coverage = start + nums[start]; // Maximum reachable index from the current position
+
+            if (coverage >= end) {
+                jumps++;
+                break; // We've reached or exceeded the end, no need to jump further
+            }
+
+            int maxReach = start; // Initialize the next jump position
+
+            for (int i = start + 1; i <= coverage; i++) {
+                if (i + nums[i] > maxReach + nums[maxReach]) {
+                    maxReach = i; // Update the next jump position
+                }
+            }
+
+            start = maxReach; // Jump to the position with the maximum reach in this jump
+            jumps++;
+        }
+
+        return jumps;
+    }
+}
