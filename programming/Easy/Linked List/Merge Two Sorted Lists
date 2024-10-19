@@ -19,3 +19,53 @@ class Solution {
         return list1;
     }
 }
+
+======================================================================================================
+
+class ListNode {
+    int val;       // Value of the node
+    ListNode next; // Pointer to the next node
+
+    // Constructor for creating a node with a value
+    ListNode(int x) {
+        this.val = x;
+        this.next = null;
+    }
+}
+
+
+public class Solution{
+    public ListNode mergeTwoLists(ListNode list1,ListNode list2){
+        if(list1!=null && list2!=null){
+            if(list1.val<list2.val){
+                list1.next=mergeTwoLists(list1.next,list2);
+                return list1;
+            }
+            else{
+                list2.next=mergeTwoLists(list1,list2.next);
+                return list2;
+            }
+        }
+        return (list1==null)?list2 :list1;
+    }
+    
+    public static void main(String[] args){
+        ListNode list1= new ListNode(1);
+        list1.next=new ListNode(2);
+        list1.next.next= new ListNode(4);
+        
+        ListNode list2= new ListNode(1);
+        list2.next= new ListNode(3);
+        list2.next= new ListNode(4);
+        
+        Solution solution = new Solution();
+        ListNode mergedlists=solution.mergeTwoLists(list1,list2);
+        
+        System.out.println("Merged lists");
+        while(mergedlists!=null){
+            System.out.print(mergedlists.val+" ");
+            mergedlists=mergedlists.next;
+        }
+        
+    }
+}
