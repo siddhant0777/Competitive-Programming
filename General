@@ -1,0 +1,163 @@
+General
+==========
+
+1️⃣ Advanced Two-Pointer / Sorting Problems
+
+These appear in Google, Amazon, Uber.
+
+✔ Must Do
+
+Merge Intervals
+
+Insert Interval
+
+Non-overlapping Intervals
+
+Meeting Rooms
+
+Meeting Rooms II (Heap + array)
+
+Boats to Save People (Greedy + sorting)
+
+Minimum Number of Arrows to Burst Balloons
+
+K closest points to origin (sorting + heap)
+
+📌 Why important?
+Real-life scheduling, merging, pairing — huge in product interviews.
+
+2️⃣ Hard Sliding Window
+
+These are very common in Meta/Google.
+
+✔ Must Do
+
+Fruit Into Baskets
+
+Longest Repeating Character Replacement
+
+Count Number of Nice Subarrays
+
+Subarrays with K Different Integers
+
+Longest Subarray with Absolute Diff ≤ Limit (used by Google)
+
+📌 These teach dynamic window balancing — extremely powerful.
+
+3️⃣ Advanced Prefix Sum / Hashing
+
+These problems are extremely common in Amazon + Microsoft.
+
+✔ Must Do
+
+Maximum Size Subarray Sum Equals k
+
+Binary Subarrays With Sum
+
+Count Subarrays with Sum Divisible by K
+
+Subarray Sums Divisible by K
+
+Contiguous Array (very popular)
+
+📌 These build strong subarray intuition — crucial.
+
+4️⃣ Hard Binary Search Variants (Google level)
+
+These questions are hard but if you master them, product companies become easy.
+
+✔ Must Do
+
+Kth Missing Positive Number
+
+Kth Smallest Element in a Sorted Matrix
+
+Median of Two Sorted Arrays (very high value)
+
+Search a 2D Matrix II
+
+Find K Closest Elements
+
+📌 Binary search on answer + search space thinking.
+
+5️⃣ Math + Array Hybrid Questions
+
+These appear in Facebook (Meta)/Amazon.
+
+✔ Must Do
+
+Rotate Array (cyclic replacement)
+
+Plus One
+
+Add to Array-Form of Integer
+
+Missing Number
+
+Find All Numbers Disappeared in an Array
+
+Find the Duplicate Number (Floyd cycle detection!)
+
+📌 Very important for reasoning skills.
+
+6️⃣ Stack + Arrays (Very Important)
+
+Asked by Google, Microsoft, Amazon.
+
+✔ Must Do
+
+Next Greater Element I
+
+Next Greater Element II
+
+Daily Temperatures (very frequent)
+
+Asteroid Collision
+
+Car Fleet
+
+📌 Stack + arrays = advanced level mastery.
+
+7️⃣ Simulation / Greedy + Arrays
+
+These are tricky, common in top interviews.
+
+✔ Must Do
+
+Gas Station (greedy reasoning)
+
+Candy (hard but common)
+
+Jump Game
+
+Jump Game II
+
+H-Index
+
+H-Index II (Binary Search)
+
+📌 Every FAANG candidate should do these.
+
+⭐ BONUS — Top 10 MUST DO HARD ARRAY PROBLEMS
+
+For final polishing (Google/Meta level):
+
+Trapping Rain Water (top 5 FAANG question)
+
+Largest Rectangle in Histogram
+
+First Missing Positive
+
+Minimum Window Substring (string but sliding window)
+
+Longest Consecutive Sequence
+
+Count of Smaller Numbers After Self (Fenwick Tree or Merge Sort)
+
+Reverse Pairs
+
+Burst Balloons
+
+Alien Dictionary (graph + array thinking)
+
+Encode and Decode Strings (FAANG phone-screen favorite)
