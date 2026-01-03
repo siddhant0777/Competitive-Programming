@@ -19,3 +19,154 @@ class Solution{
       return i==len1;
    }
 }
+
+
+============================
+
+You have two strings:
+
+s → a small word (what you want to find)
+
+t → a big word (where you search)
+
+Your task is to check:
+
+“Can I find all letters of the small word in order inside the big word?”
+
+⚠️ Important:
+
+Letters must be in the same order
+
+They do NOT have to be next to each other
+
+Example
+s = "abc"
+t = "a h b g d c"
+
+
+You can pick:
+
+a → ✔
+
+then b → ✔
+
+then c → ✔
+
+So "abc" is a subsequence of t.
+
+🧠 How the Code Thinks (Very Simple)
+
+Think of:
+
+One finger on string s
+
+One finger on string t
+
+We move the fingers step by step.
+
+🧩 The Code
+class Solution {
+
+   public boolean isSubsequence(String s, String t) {
+
+
+👉 This function will return:
+
+true → YES, it is a subsequence
+
+false → NO, it is not
+
+📏 Step 1: Measure the strings
+int len1 = s.length();
+int len2 = t.length();
+
+
+We check:
+
+How long is the small word?
+
+How long is the big word?
+
+👉 Step 2: Put fingers at the start
+int i = 0;
+int j = 0;
+
+
+i → finger on small word (s)
+
+j → finger on big word (t)
+
+Both fingers start at position 0 (the first letter).
+
+🔁 Step 3: Start walking
+while (i < len1 && j < len2) {
+
+
+This means:
+
+“Keep walking as long as:
+
+we still have letters left in s
+
+AND letters left in t”
+
+👀 Step 4: Compare letters
+if (s.charAt(i) == t.charAt(j)) {
+    i++;
+}
+
+
+This says:
+
+“If the current letter of s and t are the same,
+then move the finger on s forward.”
+
+Why?
+
+Because we found the letter we were looking for
+
+🚶 Step 5: Always move in t
+j++;
+
+
+This means:
+
+“Whether letters match or not,
+always move forward in the big word.”
+
+Why?
+
+Because you are searching inside t
+
+🏁 Step 6: Final check
+return i == len1;
+
+
+This means:
+
+“Did we find all letters of the small word?”
+
+If i reached the end → ✔ YES
+
+Otherwise → ❌ NO
+
+🧪 Simple Example Walkthrough
+Input
+s = "ab"
+t = "axb"
+
+Step-by-step
+s[i]	t[j]	Match?	Action
+a	a	✔	i++, j++
+b	x	❌	j++
+b	b	✔	i++, j++
+
+Now:
+
+i == len1 → ✔
+
+Return true.
+
+🎯 One-line explanation (child-friendly)
+
+“We walk through the big word and try to find each letter of the small word in order.”
