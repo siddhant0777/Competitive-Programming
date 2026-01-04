@@ -1,19 +1,247 @@
 https://leetcode.com/problems/reverse-words-in-a-string/description/?envType=study-plan-v2&envId=top-interview-150
 ==============================================
 
-class Solution{
-  public String reverseWords(String s){
+class Solution {
+    public String reverseWords(String s) {
 
-   StringBuilder sb= new StringBuilder();
-   int len=s.length();
-   int len1=len;
+        StringBuilder sb = new StringBuilder();
+        int len = s.length();
+        int len1 = len;
 
-   for(int i=len-1;i>=0;i--){
-      if(s.charAt(i)==' '){
-       sb.append(s.substring(i,len1));
-      }
+        for (int i = len - 1; i >= 0; i--) {
+            if (s.charAt(i) == ' ') {
+                sb.append(s.substring(i, len1));
+                len1 = i;
+            }
+        }
+        sb.append(' ' + s.substring(0, len1));
+        return sb.toString().replaceAll("\\s+", " ").trim();
     }
-    sb.append(' '+s.substring(0,len1));
-    return sb.toString.replaceAll("\s+"," ").trim();
-  }
 }
+
+===============================================================
+
+Example Input
+s = "the sky is blue"
+
+Step 1: Index positions
+
+Let’s write each character with its index 👇
+
+Index : Char
+0 : 't'
+1 : 'h'
+2 : 'e'
+3 : ' '
+4 : 's'
+5 : 'k'
+6 : 'y'
+7 : ' '
+8 : 'i'
+9 : 's'
+10: ' '
+11: 'b'
+12: 'l'
+13: 'u'
+14: 'e'
+
+
+So:
+
+length = 15
+len1 = 15
+
+Step 2: Start loop from end
+i = 14 → 'e'
+
+❌ Not space → do nothing
+
+i = 13 → 'u'
+
+❌ Not space
+
+i = 12 → 'l'
+
+❌ Not space
+
+i = 11 → 'b'
+
+❌ Not space
+
+i = 10 → ' ' (SPACE ✅)
+
+Now we enter if block:
+
+sb.append(s.substring(i, len1));
+
+
+That is:
+
+sb.append(s.substring(10, 15));
+
+VERY IMPORTANT: substring rule
+
+👉 substring(start, end)
+✔ start is inclusive
+❌ end is exclusive
+
+So:
+
+s.substring(10, 15)
+
+
+Characters taken:
+
+index 10 → ' '
+index 11 → 'b'
+index 12 → 'l'
+index 13 → 'u'
+index 14 → 'e'
+
+
+Result:
+
+" blue"
+
+
+✔ This is CORRECT
+✔ Space comes first → " blue"
+
+So now:
+
+sb = " blue"
+
+
+Then:
+
+len1 = i = 10;
+
+Continue loop
+i = 9 → 's'
+
+❌ Not space
+
+i = 8 → 'i'
+
+❌ Not space
+
+i = 7 → ' ' (SPACE ✅)
+sb.append(s.substring(7, 10));
+
+
+Characters:
+
+index 7 → ' '
+index 8 → 'i'
+index 9 → 's'
+
+
+Result:
+
+" is"
+
+
+Now:
+
+sb = " blue is"
+
+
+Update:
+
+len1 = 7
+
+i = 6 → 'y'
+
+❌ Not space
+
+i = 5 → 'k'
+
+❌ Not space
+
+i = 4 → 's'
+
+❌ Not space
+
+i = 3 → ' ' (SPACE ✅)
+sb.append(s.substring(3, 7));
+
+
+Characters:
+
+index 3 → ' '
+index 4 → 's'
+index 5 → 'k'
+index 6 → 'y'
+
+
+Result:
+
+" sky"
+
+
+Now:
+
+sb = " blue is sky"
+
+
+Update:
+
+len1 = 3
+
+
+
+
+Step 3: After loop finishes
+
+The first word "the" does not have any space before it
+
+The loop only reacts to ' ' (space characters)
+
+When i reaches index 0, there is no space
+
+So the loop ends without ever adding the first word
+
+✔ This is expected behavior
+✔ This is NOT a bug
+
+🔧 Therefore, we must add the first word manually
+
+After the loop finishes:
+
+len1 points to the index just before the first word ends
+
+The remaining part of the string is:
+
+s.substring(0, len1)
+
+
+To add it correctly with spacing, we write:
+
+sb.append(' ' + s.substring(0, len1));
+
+🧠 Why we add a leading space ' '
+
+All previous words were added with a leading space
+
+Adding one here keeps formatting consistent
+
+Extra spaces are cleaned later using:
+
+.replaceAll("\\s+", " ").trim();
+
+
+Now:
+
+sb = " blue is sky the"
+
+Step 4: Clean spaces
+sb.toString()
+→ " blue is sky the"
+
+.replaceAll("\\s+", " ")
+.trim()
+
+
+Final result:
+
+"blue is sky the"
