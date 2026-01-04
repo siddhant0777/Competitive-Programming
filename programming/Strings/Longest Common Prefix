@@ -22,3 +22,202 @@ class Solution {
 }
 
 
+=================================================
+
+We are given some words, for example:
+
+["flower", "flow", "flight"]
+
+
+We must find the longest common prefix.
+
+👉 Prefix means:
+
+Letters from the start of the word
+
+Common prefix here is:
+
+"fl"
+
+Step-by-step explanation of the code
+1️⃣ Method signature
+public String longestCommonPrefix(String[] strs) {
+
+
+This method:
+
+Takes an array of strings
+
+Returns one string → the common prefix
+
+2️⃣ First safety check (⚠️ small improvement needed)
+if(strs.length == 0){
+    return "";
+}
+
+
+👉 If there are no words, there can’t be any common prefix.
+
+So we return:
+
+""
+
+
+⚠️ NOTE: In your code, this check should be before using strs[0]
+Otherwise it may throw an error.
+
+3️⃣ Start by assuming the first word is the prefix
+String prefix = strs[0];
+
+
+👉 Think like a child:
+
+“The longest possible common prefix cannot be longer than the first word.”
+
+So we start by assuming:
+
+prefix = "flower"
+
+4️⃣ Compare prefix with each word one by one
+for(int i = 1; i < strs.length; i++){
+
+
+We start from index 1 because:
+
+prefix already came from strs[0]
+
+5️⃣ The heart of the logic (VERY IMPORTANT)
+while(strs[i].indexOf(prefix) != 0){
+
+
+Let’s understand this slowly.
+
+The confusing line
+while (strs[i].indexOf(prefix) != 0) {
+
+
+You read it as:
+
+while (flow.indexOf(flower) != 0)
+
+
+And you’re thinking:
+
+“How can ‘flower’ be inside ‘flow’ ? 🤯”
+
+That confusion is 100% valid.
+
+First: What does indexOf() really do?
+Simple rule 👇
+string.indexOf(substring)
+
+
+Means:
+
+“At which position does substring start inside string?”
+
+Examples
+"flower".indexOf("flo")  → 0
+"flower".indexOf("wer")  → 3
+"flower".indexOf("abc")  → -1
+
+
+❗ If substring does not exist, result is -1.
+
+Now let’s go step-by-step with your example
+Input:
+["flower", "flow", "flight"]
+
+Step 1️⃣ prefix is set
+prefix = "flower"
+
+Step 2️⃣ Compare with "flow"
+
+The condition becomes:
+
+while ("flow".indexOf("flower") != 0)
+
+What is this asking?
+
+“Does flow start with flower?”
+
+Does "flow" contain "flower"?
+
+❌ NO — "flower" is longer
+
+So:
+
+"flow".indexOf("flower") = -1
+
+
+And:
+
+-1 != 0   → true
+
+
+👉 So while loop enters
+
+Step 3️⃣ Shrink the prefix
+prefix = prefix.substring(0, prefix.length() - 1);
+
+
+Now:
+
+prefix = "flowe"
+
+Check again
+"flow".indexOf("flowe") = -1
+
+
+Still:
+
+-1 != 0 → true
+
+
+Shrink again:
+
+prefix = "flow"
+
+Check again
+"flow".indexOf("flow") = 0
+
+
+Now:
+
+0 != 0 → false
+
+
+🚪 Loop stops
+
+So what does this while loop REALLY mean?
+In plain English 🧠
+while (currentWord does NOT start with prefix) {
+    shorten prefix
+}
+
+Why != 0 and not == -1?
+
+Because:
+
+We don’t care where it exists
+
+We care only if it starts at position 0
+
+Position 0 = start of string ✅
+
+One mental trick to remember forever ⭐
+indexOf(prefix) == 0
+
+
+Means:
+
+startsWith(prefix)
+
+In fact, this could be written more clearly as:
+
+while (!strs[i].startsWith(prefix)) {
+    prefix = prefix.substring(0, prefix.length() - 1);
+}
+
+
+(Same logic, easier to read)
