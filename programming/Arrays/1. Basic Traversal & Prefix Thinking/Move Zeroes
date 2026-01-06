@@ -1,2 +1,62 @@
 Move Zeroes
 ===============
+class Solution {
+    public void moveZeroes(int[] nums) {
+
+        int index = 0; // points to where next non-zero should go
+
+        // Step 1: move all non-zero elements to the front
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != 0) {
+                nums[index] = nums[i];
+                index++;
+            }
+        }
+
+        // Step 2: fill the remaining positions with 0
+        while (index < nums.length) {
+            nums[index] = 0;
+            index++;
+        }
+    }
+}
+======================================================
+
+Example:
+nums = [0, 1, 0, 3, 12]
+
+Step 1: Pick only non-zero numbers
+
+See 1 → put it at front
+
+See 3 → put it next
+
+See 12 → put it next
+
+Array becomes:
+
+[1, 3, 12, ?, ?]
+
+Step 2: Fill remaining places with 0
+[1, 3, 12, 0, 0]
+
+
+✔ Order is preserved
+✔ No extra array
+✔ In-place
+
+🔁 Dry Run
+i	nums[i]	index	  array
+0	  0	      0	    [0,1,0,3,12]
+1	  1	      1	    [1,1,0,3,12]
+2	  0	      1	    [1,1,0,3,12]
+3	  3	      2	    [1,3,0,3,12]
+4	  12	    3	    [1,3,12,3,12]
+
+Then fill zeros → [1,3,12,0,0]
+
+⏱️ Complexity
+
+Time: O(n)
+
+Space: O(1) (in-place)
