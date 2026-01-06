@@ -1,6 +1,17 @@
 https://leetcode.com/problems/can-place-flowers/?envType=study-plan-v2&envId=leetcode-75
 ===========================================================================================
 
+Example 1:
+
+Input: flowerbed = [1,0,0,0,1], n = 1
+Output: true
+Example 2:
+
+Input: flowerbed = [1,0,0,0,1], n = 2
+Output: false
+
+----------
+
 class Solution {
     public boolean canPlaceFlowers(int[] flowerbed, int n) {
 
@@ -24,3 +35,106 @@ class Solution {
         return total==n;
     }
 }
+
+
+=============================================
+
+Imagine this story 🌼
+
+You have a long line of pots.
+
+1 → pot already has a flower 🌸
+
+0 → empty pot 🪴
+
+Rule: flowers cannot sit next to each other
+
+You want to plant n new flowers.
+
+Code explained step by step (kid-style)
+1️⃣ Counting how many flowers we plant
+int total = 0;
+
+
+👉 This is your flower counter
+It starts at 0 because you planted nothing yet.
+
+2️⃣ Walking through the garden
+for(int i = 0; i < flowerbed.length && total < n; i++)
+
+
+Think like this:
+
+You walk one pot at a time
+
+You STOP early if you already planted n flowers
+(smart kid, no extra walking 😄)
+
+3️⃣ Check if current pot is empty
+if(flowerbed[i] == 0)
+
+
+👉 Only empty pots can get a flower
+If there’s already a flower → skip 🚫
+
+4️⃣ Check neighbors (left & right)
+int prev = (i == 0) ? 0 : flowerbed[i - 1];
+int next = (i == flowerbed.length - 1) ? 0 : flowerbed[i + 1];
+
+
+Kid explanation:
+
+Left neighbor
+
+If this is the first pot, pretend left is empty
+
+Right neighbor
+
+If this is the last pot, pretend right is empty
+
+So edges are handled safely 🛡️
+
+5️⃣ Can we plant here?
+if(prev == 0 && next == 0)
+
+
+This means:
+
+Left pot is empty ✅
+
+Right pot is empty ✅
+
+🎉 SAFE SPOT FOUND!
+
+6️⃣ Plant the flower 🌸
+flowerbed[i] = 1;
+total++;
+
+
+Plant flower here
+
+Increase flower count
+
+7️⃣ After walking the whole garden
+return total == n;
+
+
+If you planted exactly n flowers → ✅ true
+
+Otherwise → ❌ false
+
+Example walk-through 🚶‍♂️
+Input
+flowerbed = [1,0,0,0,1]
+n = 1
+
+
+Walk:
+
+Index	Left	Current	Right	Plant?
+0	     edge	    1	  0	       ❌
+1	       1	    0	  0	       ❌
+2	       0	    0	  0	       ✅
+total = 1 → STOP				
+
+Return true ✅
