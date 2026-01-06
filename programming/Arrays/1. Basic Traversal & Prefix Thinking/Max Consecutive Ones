@@ -1,2 +1,50 @@
 Max Consecutive Ones
 ==========================
+class Solution {
+    public int findMaxConsecutiveOnes(int[] nums) {
+        int count=0;
+        int maxCount=0;
+
+        for(int i=0;i<=nums.length-1;i++){
+            if(nums[i]!=0){
+                count++;
+                if(count>maxCount){                   
+                 maxCount=count;
+                }  
+            }
+            else{             
+                count=0;
+            }
+        }
+        return maxCount;
+    }
+}
+
+Overall Time Complexity: O(n)
+Overall Space Complexity: O(1)
+==========
+
+Minor Code Improvement (Optional)
+
+class Solution {
+    public int findMaxConsecutiveOnes(int[] nums) {
+        int count = 0, maxCount = 0;
+
+        for (int num : nums) {
+            if (num == 1) {
+                count++;
+                maxCount = Math.max(maxCount, count);
+            } else {
+                count = 0;
+            }
+        }
+        return maxCount;
+    }
+}
+========================
+
+Count consecutive 1s
+
+Reset on 0
+
+Track maximum so far
