@@ -1,2 +1,69 @@
-Find Pivot Index
+Find Pivot Index(https://leetcode.com/problems/find-pivot-index/)
 ====================
+class Solution {
+    public int pivotIndex(int[] nums) {
+
+        int totalSum = 0;
+        for (int num : nums) {
+            totalSum += num;
+        }
+
+        int leftSum = 0;
+
+        for (int i = 0; i < nums.length; i++) {
+
+            int rightSum = totalSum - leftSum - nums[i];
+
+            if (leftSum == rightSum) {
+                return i; // leftmost pivot index
+            }
+
+            leftSum += nums[i];
+        }
+
+        return -1;
+    }
+}
+==========================================================================
+
+Step 1: Find the total sum
+
+Imagine adding all numbers together.
+
+Example:
+
+[1,7,3,6,5,6]
+totalSum = 28
+
+Step 2: Walk through the array
+
+We keep track of:
+
+leftSum → sum of numbers before current index
+
+rightSum → everything else
+
+Formula:
+
+rightSum = totalSum - leftSum - currentNumber
+
+Step 3: Check pivot condition
+
+If:
+
+leftSum == rightSum
+
+
+🎉 That index is the pivot → return it.
+
+🔁 Dry Run (Example 1)
+nums = [1,7,3,6,5,6]
+totalSum = 28
+
+i	nums[i]	leftSum	rightSum	pivot?
+0	  1	      0	      27	      ❌
+1	  7	      1	      20	      ❌
+2	  3	      8	      17	      ❌
+3	  6	      11	    11	      ✅
+
+➡️ Answer = 3
